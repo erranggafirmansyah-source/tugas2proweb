@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Konsultasikan Proyek Anda | ARSIVA</title>
+
+    <style>
+        /* ================================
+           RESET
+        ================================= */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #4e4136;
+
+            /* Tidak membutuhkan file gambar */
+            background:
+                linear-gradient(
+                    135deg,
+                    #f3ebdd 0%,
+                    #eee2d2 50%,
+                    #faf7f1 100%
+                );
+
+            min-height: 100vh;
+        }
+
+        /* ================================
+           CONTAINER UTAMA
+        ================================= */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+
+            box-shadow:
+                0 12px 40px rgba(88, 66, 45, 0.15);
+
+            border-top: 8px solid #a98263;
+        }
+
+        /* ================================
+           HEADER
+        ================================= */
+        .header {
+            position: relative;
+            text-align: center;
+            padding: 50px 40px 30px;
+
+            background:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.96),
+                    rgba(251, 248, 242, 0.96)
+                );
+        }
+
+        /* Dekorasi blueprint */
+        .header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(#8d6e55 1px, transparent 1px),
+                linear-gradient(90deg, #8d6e55 1px, transparent 1px);
+
+            background-size: 22px 22px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            color: #6b4f3a;
+            font-size: 38px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: #a98263;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .description {
+            max-width: 720px;
+            margin: 14px auto 10px;
+            color: #756457;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .tagline {
+            margin-top: 10px;
+            color: #8d7a69;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .line {
+            width: 70px;
+            height: 4px;
+            margin: 25px auto 0;
+            background: #c4a27f;
+            border-radius: 20px;
+        }
+
+        /* ================================
+           KARTU ARSITEKTUR
+        ================================= */
+        .architecture-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 900px;
+            margin: 30px auto 10px;
+            padding: 0 30px;
+        }
+
+        .architecture-card {
+            padding: 18px 10px;
+            text-align: center;
+
+            background: #fbf8f2;
+            border: 1px solid #dccab7;
+            border-radius: 12px;
+
+            transition: 0.25s ease;
+        }
+
+        .architecture-card:hover {
+            transform: translateY(-3px);
+            border-color: #a98263;
+            box-shadow: 0 6px 16px rgba(107, 79, 58, 0.10);
+        }
+
+        .architecture-icon {
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .architecture-card strong {
+            display: block;
+            color: #6b4f3a;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .architecture-card span {
+            display: block;
+            margin-top: 5px;
+            color: #8d7a69;
+            font-size: 10px;
+        }
+
+        /* ================================
+           ISI FORM
+        ================================= */
+        .form-area {
+            padding: 15px 50px 45px;
+        }
+
+        .section-title {
+            margin-top: 28px;
+            margin-bottom: 18px;
+            padding: 12px 15px;
+
+            background: #6b4f3a;
+            color: #ffffff;
+
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 24px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            color: #6b4f3a;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+
+            border: 1px solid #d7c7b6;
+            border-radius: 9px;
+
+            background: #fffdf9;
+            color: #4e4136;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+
+            transition: 0.2s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #a98263;
+
+            box-shadow:
+                0 0 0 3px rgba(169, 130, 99, 0.12);
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        /* ================================
+           RADIO
+        ================================= */
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            padding: 12px;
+
+            background: #f3ebdd;
+            border: 1px solid #e1d2c2;
+            border-radius: 9px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            margin: 0;
+
+            color: #4e4136;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .radio-item input {
+            accent-color: #8d6e55;
+        }
+
+        /* ================================
+           CHECKBOX TEKNIS
+        ================================= */
+        .technical-checks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+
+            padding: 15px;
+
+            background: #f3ebdd;
+            border: 1px solid #e1d2c2;
+            border-radius: 9px;
+        }
+
+        .technical-item {
+            margin: 0;
+            color: #4e4136;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .technical-item input {
+            accent-color: #8d6e55;
+            margin-right: 5px;
+        }
+
+        .note {
+            margin-top: 6px;
+            color: #8d7a69;
+            font-size: 11px;
+        }
+
+        /* ================================
+           PASSWORD
+        ================================= */
+        #passwordMessage {
+            min-height: 18px;
+            margin-top: 6px;
+            font-size: 12px;
+        }
+
+        /* ================================
+           PERSETUJUAN
+        ================================= */
+        .agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+
+            margin-top: 25px;
+            padding: 14px;
+
+            background: #f8f3eb;
+            border: 1px solid #e1d2c2;
+            border-radius: 9px;
+
+            color: #625449;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .agreement input {
+            width: 17px;
+            height: 17px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: #8d6e55;
+        }
+
+        /* ================================
+           BUTTON
+        ================================= */
+        .submit-btn {
+            width: 100%;
+            margin-top: 24px;
+            padding: 15px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: #8d6e55;
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .submit-btn:hover {
+            background: #6b4f3a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(107, 79, 58, 0.18);
+        }
+
+        /* ================================
+           PESAN BERHASIL
+        ================================= */
+        #successMessage {
+            display: none;
+
+            margin-top: 20px;
+            padding: 15px;
+
+            background: #f3ebdd;
+            border: 1px solid #cdb49b;
+            border-radius: 9px;
+
+            color: #6b4f3a;
+            text-align: center;
+
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+        .footer {
+            padding: 25px;
+            text-align: center;
+
+            color: #8d7a69;
+            font-size: 13px;
+            line-height: 1.6;
+
+            background: #fbf8f2;
+            border-top: 1px solid #eadfd3;
+        }
+
+        .footer strong {
+            color: #6b4f3a;
+        }
+
+        /* ================================
+           TABLET
+        ================================= */
+        @media (max-width: 900px) {
+            body {
+                padding: 15px;
+            }
+
+            .form-area {
+                padding: 15px 30px 35px;
+            }
+
+            .technical-checks {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ================================
+           HP
+        ================================= */
+        @media (max-width: 650px) {
+            body {
+                padding: 8px;
+            }
+
+            .header {
+                padding: 35px 20px 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+            }
+
+            .description {
+                font-size: 12px;
+            }
+
+            .tagline {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+            .architecture-strip {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+
+            .form-area {
+                padding: 10px 18px 30px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .technical-checks {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================================
+             HEADER
+        ================================= -->
+        <header class="header">
+
+            <div class="header-content">
+
+                <h1>Konsultasikan Proyek Anda</h1>
+
+                <p class="description">
+                    Mari wujudkan ide menjadi ruang yang bermakna
+                    melalui perencanaan, desain, visualisasi,
+                    dan gambar teknis yang terarah.
+                </p>
+
+                <p class="subtitle">
+                    Studio Gambar ARSIVA
+                </p>
+
+                <div class="tagline">
+                    Architecture - Space - Visualization
+                </div>
+
+                <div class="line"></div>
+
+            </div>
+
+        </header>
+
+        <!-- ================================
+             IDENTITAS ARSITEKTUR
+        ================================= -->
+        <div class="architecture-strip">
+
+            <div class="architecture-card">
+                <div class="architecture-icon">📐</div>
+                <strong>ARCHITECTURE</strong>
+                <span>Space &amp; Design</span>
+            </div>
+
+            <div class="architecture-card">
+                <div class="architecture-icon">🏗️</div>
+                <strong>STRUCTURE</strong>
+                <span>Struktur Bangunan</span>
+            </div>
+
+            <div class="architecture-card">
+                <div class="architecture-icon">📏</div>
+                <strong>CIVIL ENGINEERING</strong>
+                <span>Teknik &amp; Konstruksi</span>
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             FORM AREA
+        ================================= -->
+        <main class="form-area">
+
+            <form id="arsivaForm">
+
+                <!-- DATA KLIEN -->
+                <div class="section-title">
+                    👤 Data Pemilik / Klien
+                </div>
+
+                <div class="form-grid">
+
+                    <div>
+                        <label for="nama">Nama Lengkap</label>
+
+                        <input
+                            type="text"
+                            id="nama"
+                            name="nama"
+                            placeholder="Masukkan nama lengkap"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="contoh@email.com"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="wa">Nomor WhatsApp</label>
+
+                        <input
+                            type="tel"
+                            id="wa"
+                            name="wa"
+                            placeholder="081234567890"
+                            inputmode="numeric"
+                            pattern="[0-9]{10,15}"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="password">Password</label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Minimal 6 karakter"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="konfirmasi_password">
+                            Konfirmasi Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="konfirmasi_password"
+                            name="konfirmasi_password"
+                            placeholder="Masukkan ulang password"
+                            minlength="6"
+                            required
+                        >
+
+                        <div id="passwordMessage"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- KEBUTUHAN PROYEK -->
+                <div class="section-title">
+                    🏠 Kebutuhan Proyek
+                </div>
+
+                <div class="form-grid">
+
+                    <div>
+                        <label for="layanan">
+                            Pilih Layanan
+                        </label>
+
+                        <select id="layanan" name="layanan" required>
+
+                            <option value="">
+                                -- Pilih Layanan --
+                            </option>
+
+                            <option value="space-design">
+                                Space Design
+                            </option>
+
+                            <option value="3d-visualization">
+                                3D Visualization
+                            </option>
+
+                            <option value="technical-drawing">
+                                Technical Drawing
+                            </option>
+
+                            <option value="design-presentation">
+                                Design Presentation
+                            </option>
+
+                            <option value="arsitektur">
+                                Perencanaan Arsitektur
+                            </option>
+
+                            <option value="struktur">
+                                Perencanaan Struktur
+                            </option>
+
+                            <option value="gambar-kerja">
+                                Gambar Kerja Bangunan
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="budget">
+                            Estimasi Budget
+                        </label>
+
+                        <select id="budget" name="budget" required>
+
+                            <option value="">
+                                -- Pilih Estimasi Budget --
+                            </option>
+
+                            <option value="dibawah-1-juta">
+                                Di bawah Rp1.000.000
+                            </option>
+
+                            <option value="1-3-juta">
+                                Rp1.000.000 - Rp3.000.000
+                            </option>
+
+                            <option value="3-5-juta">
+                                Rp3.000.000 - Rp5.000.000
+                            </option>
+
+                            <option value="5-10-juta">
+                                Rp5.000.000 - Rp10.000.000
+                            </option>
+
+                            <option value="diatas-10-juta">
+                                Di atas Rp10.000.000
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="full-width">
+
+                        <label>Jenis Proyek</label>
+
+                        <div class="radio-group">
+
+                            <label class="radio-item">
+                                <input
+                                    type="radio"
+                                    name="proyek"
+                                    value="residential"
+                                    required
+                                >
+                                Residential
+                            </label>
+
+                            <label class="radio-item">
+                                <input
+                                    type="radio"
+                                    name="proyek"
+                                    value="commercial"
+                                >
+                                Commercial
+                            </label>
+
+                            <label class="radio-item">
+                                <input
+                                    type="radio"
+                                    name="proyek"
+                                    value="interior"
+                                >
+                                Interior
+                            </label>
+
+                            <label class="radio-item">
+                                <input
+                                    type="radio"
+                                    name="proyek"
+                                    value="eksterior"
+                                >
+                                Eksterior
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMASI TEKNIS -->
+                <div class="section-title">
+                    📋 Informasi Arsitektur &amp; Teknik Sipil
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="full-width">
+
+                        <label for="lokasi">
+                            Lokasi Proyek
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lokasi"
+                            name="lokasi"
+                            placeholder="Contoh: Medan, Sumatera Utara"
+                            required
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label for="luas_lahan">
+                            Luas Lahan (m²)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="luas_lahan"
+                            name="luas_lahan"
+                            placeholder="Contoh: 120"
+                            min="0"
+                            step="0.01"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label for="luas_bangunan">
+                            Luas Bangunan (m²)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="luas_bangunan"
+                            name="luas_bangunan"
+                            placeholder="Contoh: 90"
+                            min="0"
+                            step="0.01"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label for="lantai">
+                            Jumlah Lantai
+                        </label>
+
+                        <input
+                            type="number"
+                            id="lantai"
+                            name="lantai"
+                            placeholder="Contoh: 2"
+                            min="1"
+                            max="100"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label for="tinggi">
+                            Perkiraan Tinggi Bangunan
+                        </label>
+
+                        <input
+                            type="text"
+                            id="tinggi"
+                            name="tinggi"
+                            placeholder="Contoh: 8 meter"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <label for="struktur">
+                            Sistem Struktur
+                        </label>
+
+                        <select id="struktur" name="struktur">
+
+                            <option value="">
+                                -- Pilih Sistem Struktur --
+                            </option>
+
+                            <option value="beton">
+                                Beton Bertulang
+                            </option>
+
+                            <option value="baja">
+                                Struktur Baja
+                            </option>
+
+                            <option value="kayu">
+                                Struktur Kayu
+                            </option>
+
+                            <option value="kombinasi">
+                                Kombinasi
+                            </option>
+
+                            <option value="belum-tahu">
+                                Belum Menentukan
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div>
+
+                        <label for="kondisi_lahan">
+                            Kondisi Lahan
+                        </label>
+
+                        <select
+                            id="kondisi_lahan"
+                            name="kondisi_lahan"
+                        >
+
+                            <option value="">
+                                -- Pilih Kondisi Lahan --
+                            </option>
+
+                            <option value="datar">
+                                Datar
+                            </option>
+
+                            <option value="miring">
+                                Miring / Kontur
+                            </option>
+
+                            <option value="tanah-kosong">
+                                Tanah Kosong
+                            </option>
+
+                            <option value="bangunan-existing">
+                                Bangunan Existing
+                            </option>
+
+                            <option value="belum-tahu">
+                                Belum Mengetahui
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GAMBAR TEKNIS -->
+                <label>
+                    Kebutuhan Gambar Teknis
+                </label>
+
+                <div class="technical-checks">
+
+                    <label class="technical-item">
+                        <input
+                            type="checkbox"
+                            name="gambar_teknis"
+                            value="denah"
+                        >
+                        📐 Denah
+                    </label>
+
+                    <label class="technical-item">
+                        <input
+                            type="checkbox"
+                            name="gambar_teknis"
+                            value="tampak"
+                        >
+                        🏢 Tampak
+                    </label>
+
+                    <label class="technical-item">
+                        <input
+                            type="checkbox"
+                            name="gambar_teknis"
+                            value="potongan"
+                        >
+                        📏 Potongan
+                    </label>
+
+                    <label class="technical-item">
+                        <input
+                            type="checkbox"
+                            name="gambar_teknis"
+                            value="detail"
+                        >
+                        🧱 Detail Konstruksi
+                    </label>
+
+                    <label class="technical-item">
+                        <input
+                            type="checkbox"
+                            name="gambar_teknis"
+                            value="struktur"
+                        >
+                        🏗️ Gambar Struktur
+                    </label>
+
+                    <label class="technical-item">
+                        <input
+                            type="checkbox"
+                            name="gambar_teknis"
+                            value="3d"
+                        >
+                        🖥️ 3D Visualization
+                    </label>
+
+                </div>
+
+                <div class="note">
+                    Pilih jenis gambar teknis yang ingin Anda konsultasikan.
+                </div>
+
+
+                <!-- DESKRIPSI -->
+                <div class="section-title">
+                    📝 Deskripsi Proyek
+                </div>
+
+                <label for="pesan">
+                    Deskripsi / Keterangan Proyek
+                </label>
+
+                <textarea
+                    id="pesan"
+                    name="pesan"
+                    placeholder="Jelaskan konsep, kebutuhan ruang, kondisi bangunan, keinginan desain, atau kebutuhan teknis proyek Anda..."
+                    required
+                ></textarea>
+
+
+                <!-- PERSETUJUAN -->
+                <label class="agreement">
+
+                    <input
+                        type="checkbox"
+                        id="persetujuan"
+                        name="persetujuan"
+                        required
+                    >
+
+                    <span>
+                        Saya menyetujui data yang saya masukkan
+                        digunakan untuk keperluan konsultasi,
+                        pendaftaran, dan perencanaan proyek ARSIVA.
+                    </span>
+
+                </label>
+
+
+                <!-- TOMBOL -->
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Kirim Formulir
+                </button>
+
+
+                <!-- PESAN SUKSES -->
+                <div id="successMessage">
+                    <strong>Formulir berhasil diperiksa.</strong><br>
+                    Data sudah lengkap dan password cocok.
+                    Untuk penyimpanan data ke database atau pengiriman
+                    ke email, diperlukan backend/form service.
+                </div>
+
+            </form>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <strong>ARSIVA</strong>
+            — Architecture • Structure • Visualization
+
+            <br>
+
+            Setiap garis adalah langkah menuju karya terbaik.
+
+        </footer>
+
+    </div>
+
+
+    <script>
+        /* ==========================================
+           VALIDASI PASSWORD DAN FORM
+        ========================================== */
+
+        const form = document.getElementById("arsivaForm");
+        const password = document.getElementById("password");
+        const confirmPassword =
+            document.getElementById("konfirmasi_password");
+        const passwordMessage =
+            document.getElementById("passwordMessage");
+        const successMessage =
+            document.getElementById("successMessage");
+
+        function checkPassword() {
+
+            const pass = password.value;
+            const confirm = confirmPassword.value;
+
+            if (confirm === "") {
+
+                passwordMessage.textContent = "";
+                return false;
+
+            }
+
+            if (pass === confirm) {
+
+                passwordMessage.textContent =
+                    "✓ Password cocok.";
+
+                passwordMessage.style.color =
+                    "#8d6e55";
+
+                return true;
+
+            }
+
+            passwordMessage.textContent =
+                "⚠ Password belum sama.";
+
+            passwordMessage.style.color =
+                "#a94442";
+
+            return false;
+        }
+
+        confirmPassword.addEventListener(
+            "input",
+            checkPassword
+        );
+
+        password.addEventListener(
+            "input",
+            function () {
+
+                if (confirmPassword.value !== "") {
+                    checkPassword();
+                }
+
+            }
+        );
+
+
+        /* ==========================================
+           SUBMIT
+           TIDAK MEMERLUKAN PHP
+        ========================================== */
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                if (!checkPassword()) {
+
+                    alert(
+                        "Password dan konfirmasi password harus sama."
+                    );
+
+                    confirmPassword.focus();
+
+                    return;
+                }
+
+                successMessage.style.display = "block";
+
+                successMessage.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+        );
+    </script>
+
+</body>
+</html>
